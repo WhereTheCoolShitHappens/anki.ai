@@ -1,0 +1,65 @@
+<mvc:View controllerName="AnkiAi.controller.Dashboard" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data" displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<layout:Grid defaultSpan="L3 M3 S6" class="sapUiSmallMarginTop headerGrid">
+						<Text class="whiteText" text="Fastest Lap:"/>
+						<Text class="whiteText" text="{/summary/fastestLaptime} seconds."></Text>
+						<Text class="whiteText" text="Car name:"></Text>
+						<Text class="whiteText" text="{trackData>/track/0/carName}"/>
+						<Text class="whiteText" text="Last Lap:"></Text>
+						<Text class="whiteText" text="{/summary/lastLaptime} seconds."/>
+						<Text class="whiteText" text="Battery Level:"></Text>
+						<Image src="img/battery_{/summary/batteryLevel}.png" width="32px" densityAware="false"/>
+						<Text class="whiteText" text="Lap Nr:"></Text>
+						<Text class="whiteText" text="{/summary/laps}"/>
+						<!--
+						<Button text="Reset Model" press="onReset">
+							<layoutData>
+								<layout:GridData span="L3 M3 S3" linebreakL="true" linebreakM="true" linebreakS="true"/>
+							</layoutData>
+						</Button>
+						-->
+						<HBox>
+							<layoutData>
+								<layout:GridData span="L6 M6 S6" linebreakL="true" linebreakM="true" linebreakS="true"/>
+							</layoutData>
+							<html:canvas id="myCanvas" width="640" height="640"></html:canvas>
+						</HBox>
+						<Image src="img/car/{trackData>/track/0/carName}.png" width="300px" densityAware="false">
+							<layoutData>
+								<layout:GridData span="L6 M6 S6"/>
+							</layoutData>
+						</Image>
+					</layout:Grid>
+					<layout:FixFlex>
+						<layout:flexContent height="50%">
+							<viz:Popover id="idPopOver"></viz:Popover>
+							<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"  width="100%" vizType="timeseries_line"
+								vizProperties="{ title: {text : 'Laptimes', visible : true}}">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{/stuff}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Lap" value="{lapTimestamp}" dataType="date"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Laptime" value="{lapTime}"/>
+											<viz.data:MeasureDefinition name="Average" value="{averageTime}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Laptime,Average"/>
+									<viz.feeds:FeedItem id='categoryAxisFeed' uid="timeAxis" type="Dimension" values="Lap"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</layout:flexContent>
+					</layout:FixFlex>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

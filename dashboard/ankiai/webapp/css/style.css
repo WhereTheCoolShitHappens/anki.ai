@@ -1,0 +1,13 @@
+.headerGrid{
+	border: 1px solid grey;
+    margin: 15px;
+    padding: 15px !important;
+    border-radius: 10px;
+    background-image: url(../img/track/0.png)
+}
+#__flex0{
+	height: 50%;
+}
+.whiteText{
+	color: #FFFFFF;
+}

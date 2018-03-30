@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>anki.ai</title>
+
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"AnkiAi": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "AnkiAi"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+<!-- images are 256-256, max canvas = 5x5 pieces -->
+	<!--<body class="sapUiBody" id="content">-->
+	<body class="sapUiBody" id="content">
+		<img id="0" width="0" height="0" src="img/track/0.png"/>
+		<img id="1" width="0" height="0" src="img/track/1.png"/>
+		<img id="2" width="0" height="0" src="img/track/2.png"/>
+		<img id="3" width="0" height="0" src="img/track/3.png"/>
+		<img id="4" width="0" height="0" src="img/track/4.png"/>
+		<img id="5" width="0" height="0" src="img/track/5.png"/>
+		<img id="6" width="0" height="0" src="img/track/6.png"/>
+		<img id="7" width="0" height="0" src="img/track/7.png"/>
+		<img id="8" width="0" height="0" src="img/track/8.png"/>
+		<img id="9" width="0" height="0" src="img/track/9.png"/>
+
+		<!--<canvas id="myCanvas" width="1280" height="1280" style="border:1px solid #c3c3c3;">-->
+		<!--	Your browser does not support the canvas element.-->
+		<!--</canvas>-->
+	</body>
+
+</html>
